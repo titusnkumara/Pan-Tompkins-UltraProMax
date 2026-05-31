@@ -1,5 +1,40 @@
-# Pan-Tompkins-UltraProMax
-Pan-Tompkins UltraProMax: Sparse Min-Max Sampling for Ultra-Low-Rate, High-Accuracy R-Peak Detection
+# Pan‑Tompkins UltraProMax – Sparse Min‑Max R‑Peak Detection
+
+This repository contains the code and evaluation scripts for the paper:
+
+> **"Pan‑Tompkins UltraProMax: Sparse Min‑Max Sampling Enables 10× Faster, 38× Compressed, and More Accurate R‑Peak Detection"**
+
+The MATLAB scripts reproduce all frequency‑sweep results (MIT‑BIH, QTDB, NSTDB) and the 9+7 bit compression + LZ4 experiments. Python scripts download the required databases from PhysioNet.
+
+
+> **Note**: The MATLAB scripts are **self‑contained** – they include the complete Pan‑Tompkins implementation and all helper functions.
+
+## Prerequisites
+
+### Python (for data download)
+- Python 3.7+
+- Install required packages:
+  ```bash
+  pip install wfdb numpy requests
+### MATLAB (for all experiments)
+MATLAB R2020b or newer (older versions may work but are not tested)
+Signal Processing Toolbox (required for filtfilt, butter, resample, findpeaks)
+### Optional (for compression script only)
+LZ4 command‑line tool (used for extra compression of packed sparse data)
+macOS: brew install lz4
+Linux: sudo apt install lz4 (or yum install lz4)
+Windows: download from lz4.github.io and add to PATH
+
+## Running Instructions
+
+Follow these steps to download the databases, run the frequency‑sweep experiments, and test the compression pipeline.
+1. Clone the repository
+2. Download the ECG databases
+   Run each Python script once. They will create folders mitdb-mat/, qtdb-mat/, nstdb-mat/.
+    python downloadMITBIH.py
+    python downloadQT.py
+    python downloadNSTDB.py
+3. Run the frequency sweep, and compression mlx files.  Select the database as your requirement within the code. 
 
 ## Performance Evaluation of Sparse Min‑Max Pan‑Tompkins
 
